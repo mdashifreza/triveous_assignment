@@ -4,6 +4,7 @@ import { createStore } from 'redux';
 const initialState = {
     newsData: [],
     newsUserName: '',
+    favNewsData : [],
 };
 
 // Define your reducer function
@@ -13,6 +14,11 @@ const rootReducer = (state = initialState, action) => {
             return { ...state, newsData: action.payload };
         case 'SET_USER_NAME':
             return { ...state, newsUserName: action.payload };
+        case 'FAV_NEWS_DATA':
+            return { ...state, favNewsData: [...state.favNewsData, action.payload] };
+        case 'REMOVE_FAVORITE':
+            return {...state, favNewsData: state.favNewsData.filter((id) => id.toString() !== action.payload),
+            };
         default:
             return state;
     }

@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import Home from "./Components/Home";
 import FullScreenGrid from './Components/FullScreenGrid';
 import triveous from './assets/triveous.png';
+import Fav from './Components/News/Fav'
 import { useDispatch, useSelector } from 'react-redux';
-
 
 import { auth } from "./Firebase";
 
@@ -15,20 +15,10 @@ function App() {
   const dispatch = useDispatch();
   const newsData = useSelector((state) => state.newsData);
   const newsUserName = useSelector((state) => state.newsUserName);
-  //
   // const [data, setData] = useState([]);
-  useEffect(() => {
-    const cachedData = localStorage.getItem('newsData');
-    if (cachedData) {
-      dispatch({ type: 'SET_DATA', payload: JSON.parse(cachedData) });
-    } else {
-      // If not cached, fetch data from the API
-      callApi();
-    }
-  }, []);
+  const url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=7d670cd4a2984be79e46f36e32a76cd3";
   const callApi = async () => {
     try {
-      const url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=7d670cd4a2984be79e46f36e32a76cd3";
       const responce = await fetch(url);
       if (!responce.ok) {
         return new Error("error in fetching");
@@ -43,8 +33,17 @@ function App() {
       console.log("api fethc error::", error);
     }
   };
-  // const [userName, setUsername] = useState("");
+  useEffect(() => {
+    const cachedData = localStorage.getItem('newsData');
+    if (cachedData) {
+      dispatch({ type: 'SET_DATA', payload: JSON.parse(cachedData) });
+    } else {
+      // If not cached, fetch data from the API
+      callApi();
+    }
+  }, []);
 
+  // const [userName, setUsername] = useState("");
   useEffect(()=>{
     auth.onAuthStateChanged((user)=>{
       if(user){
@@ -84,6 +83,7 @@ function App() {
             <Route path="/signup" element={<Signup />}/>
             <Route path="/login" element={<Login />} />
             <Route path="/grid-news" element={<FullScreenGrid user={auth.currentUser} />} />
+            <Route path="/favorite" element={<Fav />} />
         </Routes>
     </Router>
     </div>
