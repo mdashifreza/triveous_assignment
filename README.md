@@ -14,7 +14,7 @@ link:  (https://www.loom.com/share/ad00c57a930048b9bf6379f4b969b11b?sid=f9c19934
    - Users can create accounts and log in to access personalized news preferences.
    - Firebase used for authentication.
    - **Dummy Login Credentials:**
-   - **Email ID:** test1@gmail.com
+   - **Email ID:** triveous@gmail.com
    - **Password:** 123456
 
 2. **News API Integration:**
