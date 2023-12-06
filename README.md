@@ -12,7 +12,7 @@ This project aims to create a responsive and user-friendly news application with
    - Firebase will be used for authentication.
 
 2. **News API Integration:**
-   - Utilize an open-source news API (e.g., [News API](https://newsapi.org/)) to fetch the latest news articles.
+   - Utilize an open-source news API (https://newsapi.org/) to fetch the latest news articles.
    - Display articles in a list view for the Next.js app and in two columns for the web app.
 
 3. **Grid View:**
@@ -47,4 +47,11 @@ To run the project locally, follow these steps:
    ```bash
    git clone https://github.com/your-username/news-app.git
    cd news-app
+2. Install dependencies:
+    ```bash
+    npm install
+
+2. Run the application:
+    ```bash
+    npm start
 
