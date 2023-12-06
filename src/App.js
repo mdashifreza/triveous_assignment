@@ -21,6 +21,7 @@ function App() {
 
   useEffect(() => {
     const cachedData = localStorage.getItem('newsData');
+    
     const callApi = async () => {
       try {
         const responce = await fetch(url);
@@ -42,7 +43,7 @@ function App() {
       dispatch({ type: 'SET_DATA', payload: JSON.parse(cachedData) });
     }
   callApi();
-  }, []);
+  }, [dispatch, url]);
 
   useEffect(()=>{
     auth.onAuthStateChanged((user)=>{
