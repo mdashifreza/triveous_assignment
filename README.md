@@ -9,38 +9,35 @@ This project aims to create a responsive and user-friendly news application with
 
 1. **User Registration and Login:**
    - Users can create accounts and log in to access personalized news preferences.
-   - Firebase will be used for authentication.
+   - Firebase used for authentication.
    - **Dummy Login Credentials:**
    - **Email ID:** test1@gmail.com
    - **Password:** 123456
 
 2. **News API Integration:**
    - Utilize an open-source news API (https://newsapi.org/) to fetch the latest news articles.
-   - Display articles in a list view for the Next.js app and in two columns for the web app.
+   - Display articles in a list and Grid view.
 
 3. **Grid View:**
-   - Implement a toggle button to switch between list and grid views.
-   - Allow users to choose their preferred UI styling.
-
+   - Implemented a toggle button to switch between list and grid views.
+   - 
 4. **News Detail View:**
-   - When users tap on a news article item, show a detailed view of the article in another full screen.
-   - Include the title, description, image, and a link to the full article.
-   - Use an in-app web view for React app implementation.
+   - When users tap on a news article item, Displaying detailed view of the article in full page.
+   - This Include the title, description, image, and a link to the full article.
 
 5. **Favorite Articles:**
-   - Enable users to mark articles as favorites.
-   - Store user preferences in Firebase for persistence.
-   - Implement a heart icon for marking favorites in both list items and details view.
+   - Implemented alow users to mark articles as favorites.
+   - Store user preferences in redux and for persistence localstorage.
+   - Implemented a button to see favourite in details view.
 
 6. **State Management:**
-   - Incorporate state management tools to efficiently manage the application's state.
+   - Use Redux state management tools to efficiently manage the application's state.
 
 7. **Offline Support:**
-   - Implement caching mechanisms to allow users to store and access previously fetched news articles even when they are offline.
+   - Implemented Local Storage for caching mechanisms that allow users to store and access previously fetched news articles even when they are offline.
 
 8. **Design and UI/UX:**
-   - Pay careful attention to app design.
-   - Create a user-friendly interface that is responsive and provides a smooth user experience.
+   - Created a best possible user-friendly interface that is responsive and provides a smooth user experience.
 
 ## Getting Started
 To run the project locally, follow these steps:
