@@ -28,8 +28,6 @@ const Login = () => {
         signInWithEmailAndPassword(auth, values.email, values.pass)
         .then(async (res)=>{
             setSubmitBtnDisabled(false);
-            const user = res.user;
-            console.log("testing name peops:", user.displayName, user)
             navigate("/");
         })
         .catch((err)=>{

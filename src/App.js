@@ -15,7 +15,9 @@ function App() {
   const dispatch = useDispatch();
   const newsData = useSelector((state) => state.newsData);
   const newsUserName = useSelector((state) => state.newsUserName);
-  const url = "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=7d670cd4a2984be79e46f36e32a76cd3";
+
+  const apiKey = process.env.REACT_APP_API_KEY;
+  const url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=${apiKey}`;
 
   useEffect(() => {
     const cachedData = localStorage.getItem('newsData');
@@ -26,6 +28,7 @@ function App() {
           return new Error("error in fetching");
         }
         const responceData = await responce.json();
+        // console.log("md ashif reza api testing::: ", responceData);
         //redux store
         dispatch({ type: 'SET_DATA', payload: responceData.articles });
          // Cache the data in local storage
