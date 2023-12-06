@@ -10,6 +10,9 @@ This project aims to create a responsive and user-friendly news application with
 1. **User Registration and Login:**
    - Users can create accounts and log in to access personalized news preferences.
    - Firebase will be used for authentication.
+   - **Dummy Login Credentials:**
+   - **Email ID:** test1@gmail.com
+   - **Password:** 123456
 
 2. **News API Integration:**
    - Utilize an open-source news API (https://newsapi.org/) to fetch the latest news articles.
