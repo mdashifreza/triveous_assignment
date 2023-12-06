@@ -15,37 +15,32 @@ function App() {
   const dispatch = useDispatch();
   const newsData = useSelector((state) => state.newsData);
   const newsUserName = useSelector((state) => state.newsUserName);
-  // const [data, setData] = useState([]);
-  // const url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=7d670cd4a2984be79e46f36e32a76cd3";
-  const url = " https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=7d670cd4a2984be79e46f36e32a76cd3";
-  const callApi = async () => {
-    try {
-      const responce = await fetch(url);
-      if (!responce.ok) {
-        return new Error("error in fetching");
-      }
-      const responceData = await responce.json();
-      console.log('cors error resolving::', responceData);
-      // setData(responceData);
-      //redux
-      dispatch({ type: 'SET_DATA', payload: responceData.articles });
-       // Cache the data in local storage
-      localStorage.setItem('newsData', JSON.stringify(responceData.articles));
-    } catch (error) {
-      console.log("api fethc error::", error);
-    }
-  };
+  const url = "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=7d670cd4a2984be79e46f36e32a76cd3";
+
   useEffect(() => {
     const cachedData = localStorage.getItem('newsData');
+    const callApi = async () => {
+      try {
+        const responce = await fetch(url);
+        if (!responce.ok) {
+          return new Error("error in fetching");
+        }
+        const responceData = await responce.json();
+        //redux store
+        dispatch({ type: 'SET_DATA', payload: responceData.articles });
+         // Cache the data in local storage
+        localStorage.setItem('newsData', JSON.stringify(responceData.articles));
+      } catch (error) {
+        console.log("api fethc error::", error);
+      }
+    };
+
     if (cachedData) {
       dispatch({ type: 'SET_DATA', payload: JSON.parse(cachedData) });
-    } else {
-      // If not cached, fetch data from the API
-      callApi();
     }
+  callApi();
   }, []);
 
-  // const [userName, setUsername] = useState("");
   useEffect(()=>{
     auth.onAuthStateChanged((user)=>{
       if(user){

@@ -5,6 +5,7 @@ const initialState = {
     newsData: [],
     newsUserName: '',
     favNewsData : [],
+    userFavNews : [],
 };
 
 // Define your reducer function
@@ -19,6 +20,8 @@ const rootReducer = (state = initialState, action) => {
         case 'REMOVE_FAVORITE':
             return {...state, favNewsData: state.favNewsData.filter((id) => id.toString() !== action.payload),
             };
+        case 'USER_FAV_NEWS':
+            return { ...state, userFavNews: action.payload };
         default:
             return state;
     }

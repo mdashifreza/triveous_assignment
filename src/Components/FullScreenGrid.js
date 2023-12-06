@@ -1,29 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
-import useFavorites from "./useFavorites";
 import { useDispatch, useSelector } from 'react-redux';
 
-// import { db } from "../Firebase";
-// import { addDoc, collection } from 'firebase/firestore';
-
 const FullScreenGrid = (props) => {
-    console.log("grid view props testing", props)
     const location = useLocation();
     const { state } = location || {};
     const item = state?.item;
-
-    const { user } = props; // Pass the user object from the App component
-    // const { isFavorite, toggleFavorite, loading, error } = useFavorites(user, item);
-
-    // if (loading) {
-    //     return <div>Loading...</div>;
-    // }
-
-    // if (error) {
-    //     return <div>Error: {error}</div>;
-    // }
-    // console.log("user props testing ", user?.uid)
-    // const [favorites, setFavorites] = useState([]);
     
     const dispatch = useDispatch();
     const favorites = useSelector((state) => state.favNewsData);
@@ -35,7 +17,6 @@ const FullScreenGrid = (props) => {
             if (favorites.includes(itemAuthor)) {
                 dispatch({ type: 'REMOVE_FAVORITE', payload: itemAuthor });
             } else {
-                // setFavorites([...favorites, itemAuthor]);
                 dispatch({ type: 'FAV_NEWS_DATA', payload: itemAuthor });
             }
         }
@@ -52,16 +33,13 @@ const FullScreenGrid = (props) => {
                                 onClick={() => toggleFavorite(item?.author)}
                             >favorite</button>
                         </div>
-                        <p>{item.dcontent}</p>
-                        <p className="text-sm">{item.description}</p>
-                        <p>Source:<a href={item.url} className="text-red-500">{item.url}</a></p>
-                        <img src={item.urlToImage} alt="" />
-                        <p className="text-sm">{item.content}</p>
-                        <p>{item.author}</p>
-                        <p>{item.publishedAt}</p>
-                        {/* <button onClick={toggleFavorite}>
-                            {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-                        </button> */}
+                        <p>{item?.content}</p>
+                        <p className="text-sm">{item?.description}</p>
+                        <p>Source:<a href={item?.url} className="text-red-500">{item?.url}</a></p>
+                        <img src={item?.urlToImage} alt="" />
+                        <p className="text-sm">{item?.content}</p>
+                        <p>{item?.author}</p>
+                        <p>{item?.publishedAt}</p>
                     </div>
                 </div>
             </div>
