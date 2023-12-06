@@ -16,7 +16,8 @@ function App() {
   const newsData = useSelector((state) => state.newsData);
   const newsUserName = useSelector((state) => state.newsUserName);
   // const [data, setData] = useState([]);
-  const url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=7d670cd4a2984be79e46f36e32a76cd3";
+  // const url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=7d670cd4a2984be79e46f36e32a76cd3";
+  const url = " https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=7d670cd4a2984be79e46f36e32a76cd3";
   const callApi = async () => {
     try {
       const responce = await fetch(url);
@@ -24,6 +25,7 @@ function App() {
         return new Error("error in fetching");
       }
       const responceData = await responce.json();
+      console.log('cors error resolving::', responceData);
       // setData(responceData);
       //redux
       dispatch({ type: 'SET_DATA', payload: responceData.articles });
