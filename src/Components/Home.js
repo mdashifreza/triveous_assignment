@@ -11,8 +11,8 @@ const Home = ({ name, data }) => {
     const dispatch = useDispatch();
 
     const handleFavBtnSee = () => {
-        const filteredArray = data.filter(item => {
-            return favorites.includes(item.author);
+        const filteredArray = data?.filter(item => {
+            return favorites.includes(item?.title);
         });
 
         dispatch({ type: 'USER_FAV_NEWS', payload: filteredArray });
@@ -32,7 +32,7 @@ const Home = ({ name, data }) => {
         <div className="min-h-screen bg-gray-100">
             <div className="container mx-auto p-8">
                 <div className='flex justify-between items-center'>
-                    <h2 className="text-2xl font-semibold mb-6">Welcome to Indian News,{" "}{name}</h2>
+                    <h2 className="text-2xl font-semibold mb-6">Welcome to Indian News,{" "}<span className={name ? `bg-teal-900 text-white p-1 rounded-md font-semibold` : ``}>{name}</span></h2>
                     {name && <button className='bg-teal-500 font-bold text-white p-2 rounded-md'
                         onClick={handleFavBtnSee}>See Your Favorite</button>}
                 </div>

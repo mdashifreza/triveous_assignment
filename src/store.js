@@ -21,7 +21,7 @@ const rootReducer = (state = initialState, action) => {
             return {...state, favNewsData: state.favNewsData.filter((id) => id.toString() !== action.payload),
             };
         case 'USER_FAV_NEWS':
-            return { ...state, userFavNews: action.payload };
+            return { ...state, userFavNews: action.payload};
         default:
             return state;
     }
