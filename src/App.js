@@ -16,8 +16,10 @@ function App() {
   const newsData = useSelector((state) => state.newsData);
   const newsUserName = useSelector((state) => state.newsUserName);
 
-  const apiKey = process.env.REACT_APP_API_KEY;
-  const url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=${apiKey}`;
+  // const apiKey = process.env.REACT_APP_API_KEY;
+  // const url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=${apiKey}`;
+
+  const url = '../netlify/functions/newsProxy'
 
   useEffect(() => {
     const cachedData = localStorage.getItem('newsData');
