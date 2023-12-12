@@ -16,11 +16,12 @@ function App() {
   const newsUserName = useSelector((state) => state.newsUserName);
 
   const apiKey = process.env.REACT_APP_API_KEY;
-  const url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${apiKey}`;
+  // const url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=${apiKey}`;
+
+  const url = `https://api.worldnewsapi.com/search-news?api-key=${apiKey}`;
 
   useEffect(() => {
-    const cachedData = localStorage.getItem('newsData');
-    
+    // const cachedData = localStorage.getItem('newsData');
     const callApi = async () => {
       try {
         const responce = await fetch(url);
@@ -31,18 +32,18 @@ function App() {
         const responceData = await responce.json();
         console.log("md ashif reza api testing::: ", responceData);
         //redux store
-        dispatch({ type: 'SET_DATA', payload: responceData.articles });
+        dispatch({ type: 'SET_DATA', payload: responceData.news});
          // Cache the data in local storage
-        localStorage.setItem('newsData', JSON.stringify(responceData.articles));
+        // localStorage.setItem('newsData', JSON.stringify(responceData.articles));
 
       } catch (error) {
         console.log("api fethc error::", error);
       }
     };
 
-    if (cachedData) {
-      dispatch({ type: 'SET_DATA', payload: JSON.parse(cachedData) });
-    }
+    // if (cachedData) {
+    //   dispatch({ type: 'SET_DATA', payload: JSON.parse(cachedData) });
+    // }
 
   callApi();
   
