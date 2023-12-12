@@ -7,7 +7,6 @@ import FullScreenGrid from './Components/FullScreenGrid';
 import triveous from './assets/triveous.png';
 import Fav from './Components/News/Fav'
 import { useDispatch, useSelector } from 'react-redux';
-
 import { auth } from "./Firebase";
 
 function App() {
@@ -16,10 +15,8 @@ function App() {
   const newsData = useSelector((state) => state.newsData);
   const newsUserName = useSelector((state) => state.newsUserName);
 
-  // const apiKey = process.env.REACT_APP_API_KEY;
-  // const url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=${apiKey}`;
-
-  const url = '../netlify/functions/newsProxy'
+  const apiKey = process.env.REACT_APP_API_KEY;
+  const url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=${apiKey}`;
 
   useEffect(() => {
     const cachedData = localStorage.getItem('newsData');
@@ -27,15 +24,17 @@ function App() {
     const callApi = async () => {
       try {
         const responce = await fetch(url);
+        console.log(responce)
         if (!responce.ok) {
           return new Error("error in fetching");
         }
         const responceData = await responce.json();
-        // console.log("md ashif reza api testing::: ", responceData);
+        console.log("md ashif reza api testing::: ", responceData);
         //redux store
         dispatch({ type: 'SET_DATA', payload: responceData.articles });
          // Cache the data in local storage
         localStorage.setItem('newsData', JSON.stringify(responceData.articles));
+
       } catch (error) {
         console.log("api fethc error::", error);
       }
@@ -44,7 +43,9 @@ function App() {
     if (cachedData) {
       dispatch({ type: 'SET_DATA', payload: JSON.parse(cachedData) });
     }
+
   callApi();
+  
   }, [dispatch, url]);
 
   useEffect(()=>{
