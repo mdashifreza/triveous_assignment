@@ -16,7 +16,7 @@ function App() {
   const newsUserName = useSelector((state) => state.newsUserName);
 
   const apiKey = process.env.REACT_APP_API_KEY;
-  const url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=${apiKey}`;
+  const url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${apiKey}`;
 
   useEffect(() => {
     const cachedData = localStorage.getItem('newsData');
