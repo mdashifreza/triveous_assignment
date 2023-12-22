@@ -9,7 +9,7 @@ This project aims to create a responsive and user-friendly news application with
 link: (https://triveous-assignment-eight.vercel.app/)
 
 ## Video Demo
-link:  (https://www.loom.com/share/ad00c57a930048b9bf6379f4b969b11b?sid=f9c19934-6ebb-43a5-b90f-5bcdaad33620)
+link:  (https://www.loo)
 
 ## Features
 
